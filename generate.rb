@@ -10,13 +10,21 @@ require 'sinatra'
 get '/twitter' do 
   error 400 if !params[:url]
   content_type 'image/png'
-  get_twitter_stats(params[:url])
+  begin
+      get_twitter_stats(params[:url])
+  rescue
+      get_image('blank', '0', '#ffffff')
+  end
 end
 
 get '/facebook' do 
   error 400 if !params[:url]
   content_type 'image/png'
-  get_facebook_stats(params[:url])
+  begin
+      get_facebook_stats(params[:url])
+  rescue
+      get_image('blank', '0', '#ffffff')
+  end
 end
 
 def to_query(params, *parent)
