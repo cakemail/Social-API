@@ -1,1 +1,3 @@
 bundle/*
+.make.log
+.tagfile
